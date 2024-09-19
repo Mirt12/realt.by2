@@ -20,7 +20,7 @@ public class HomePageTests {
         driver.manage().window().maximize();
         driver.get("https://realt.by");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
-        String loginBtnLocator = "//a[@href='/login/?nextPage=/']//span[@class='truncate ml-1.5 ml-2.5' and text()='Войти']";
+        String loginBtnLocator = "//nav/a[@href='/login/?nextPage=/']";
         WebElement loginBtn = driver.findElement(By.xpath(loginBtnLocator));
         loginBtn.click();
     }
