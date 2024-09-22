@@ -5,15 +5,9 @@ import main.ui.steps.LoginSteps;
 import main.ui.utils.LoadHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.Wait;
 
 import java.io.UnsupportedEncodingException;
-import java.time.Duration;
+
 
 public class HomePageTests {
 
