@@ -31,10 +31,9 @@ public class HomePageTests {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         String emailInputFielLocator = "//input[@id='email']";
         String submitRegistrationBtnLocator = "//button[@type='submit']";
-        String agreeConditionsCheckBox = "//input[@id=\"gdprConfirmed\"]";
-        driver.findElement(By.xpath(emailInputFielLocator)).sendKeys("zfFr52h@jhj1.com");
-        driver.findElement(By.xpath(agreeConditionsCheckBox)).isDisplayed();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
+        String agreeConditionsCheckBox = "//label[@for='gdprConfirmed']";
+        driver.findElement(By.xpath(emailInputFielLocator)).sendKeys("zfFr2h@jhj1.com");
+        driver.findElement(By.xpath(agreeConditionsCheckBox)).click();
         driver.findElement(By.xpath(submitRegistrationBtnLocator)).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         String expectedErrorText = "Некорректный Email";
