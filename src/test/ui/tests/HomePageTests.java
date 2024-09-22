@@ -1,5 +1,8 @@
 package test.ui.tests;
 
+import main.ui.page.HomePage;
+import main.ui.steps.LoginSteps;
+import main.ui.utils.LoadHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -9,37 +12,34 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Wait;
 
+import java.io.UnsupportedEncodingException;
 import java.time.Duration;
 
 public class HomePageTests {
+
     @Test
-    public void loginWithIncorrectEmail() {
-        WebDriver driver;
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-cache", "--incognito", "--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.get("https://realt.by");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
-        String loginBtnLocator = "//*[@id=\"mainHeader\"]/div/div/div[2]/div/a";
-        driver.findElement(By.xpath(loginBtnLocator)).click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
-        String loginInputFieldLocator = "//input[@name='login']";
-        driver.findElement(By.xpath(loginInputFieldLocator)).sendKeys("Galija");
-        String continueBtnLocator = "//button[@type='submit']";
-        driver.findElement(By.xpath(continueBtnLocator)).click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
-        String emailInputFielLocator = "//input[@id='email']";
-        String submitRegistrationBtnLocator = "//button[@type='submit']";
-        String agreeConditionsCheckBoxLocator = "//label[@for='gdprConfirmed']";
-        driver.findElement(By.xpath(emailInputFielLocator)).sendKeys("zfFr2h@jhj1.com");
-        driver.findElement(By.xpath(agreeConditionsCheckBoxLocator)).click();
-        driver.findElement(By.xpath(submitRegistrationBtnLocator)).click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
-        String expectedErrorText = "Некорректный Email";
-        String errorLocator = "//div[@class='text-danger-500 pt-1.5 text-subhead']";
-        WebElement actualError = driver.findElement(By.xpath(errorLocator));
-        String actualErrorText = actualError.getText();
-        Assertions.assertEquals(expectedErrorText, actualErrorText);
+    public void loginWithIncorrectEmail() throws UnsupportedEncodingException, InterruptedException {
+        LoginSteps loginSteps = new LoginSteps();
+        loginSteps.fillLoginFormAndSubmit("Halija", "zfFr3h@jhj1.com");
+        String actualErrorText = LoadHelper.getTextByLocator(HomePage.errorLocator);
+        Assertions.assertEquals(HomePage.expectedErrorText, actualErrorText);
     }
+
+    @Test
+    public void loginWithIncorrectLogin() throws UnsupportedEncodingException, InterruptedException {
+        LoginSteps loginSteps = new LoginSteps();
+        loginSteps.fillLoginFormAndSubmit("GGGGGG", "Mirt@gmail.com");
+        String actualErrorText = LoadHelper.getTextByLocator(HomePage.errorLocator);
+        Assertions.assertEquals(HomePage.expectedErrorText, actualErrorText);
+    }
+
+    @Test
+    public void loginWithoutEmail() throws UnsupportedEncodingException, InterruptedException {
+        LoginSteps loginSteps = new LoginSteps();
+        loginSteps.fillLoginFormAndSubmit("Halija", "");
+        String actualErrorText = LoadHelper.getTextByLocator(HomePage.errorLocator);
+        Assertions.assertEquals(HomePage.expectedErrorText, actualErrorText);
+    }
+
+
 }

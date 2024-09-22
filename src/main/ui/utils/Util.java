@@ -3,9 +3,9 @@ package main.ui.utils;
 import com.github.javafaker.Faker;
 
 public class Util {
-    public static String generatePWD() {
+    public static String generateEmail() {
         Faker faker = new Faker();
-        String password = faker.internet().password();
-        return password;
+        String email = faker.internet().emailAddress();
+        return email;
     }
 }
