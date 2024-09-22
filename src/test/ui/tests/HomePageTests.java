@@ -26,8 +26,8 @@ public class HomePageTests {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         String loginInputFieldLocator = "//input[@name='login']";
         driver.findElement(By.xpath(loginInputFieldLocator)).sendKeys("Galija");
-        String submitBtnLocator = "//button[@type='submit']";
-        driver.findElement(By.xpath(submitBtnLocator)).click();
+        String continueBtnLocator = "//button[@type='submit']";
+        driver.findElement(By.xpath(continueBtnLocator)).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         String emailInputFielLocator = "//input[@id='email']";
         String submitRegistrationBtnLocator = "//button[@type='submit']";

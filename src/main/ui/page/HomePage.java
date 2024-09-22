@@ -14,7 +14,7 @@ public class HomePage {
     private String loginUrl = "https://realt.by/login/?nextPage=/";
     public static final String loginBtnLocator = "//*[@id=\"mainHeader\"]/div/div/div[2]/div/a";
     public static final String loginInputFieldLocator = "//input[@name='login']";
-    public static final String submitBtnLocator = "//button[@type='submit']";
+    public static final String continueBtnLocator = "//button[@type='submit']";
     public static final String emailInputFielLocator = "//input[@id='email']";
     public static final String submitRegistrationBtnLocator = "//button[@type='submit']";
     public static final String agreeConditionsCheckBoxLocator = "//label[@for='gdprConfirmed']";
@@ -49,6 +49,12 @@ public class HomePage {
             }
         });
         inputLogin.sendKeys(login);
+        return this;
+    }
+
+    public HomePage clickContinueBtn() {
+        WebElement continueBtn = driver.findElement(By.xpath(continueBtnLocator));
+        continueBtn.click();
         return this;
     }
 
