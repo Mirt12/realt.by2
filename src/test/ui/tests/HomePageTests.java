@@ -14,7 +14,7 @@ public class HomePageTests {
     @Test
     public void loginWithIncorrectEmail() throws UnsupportedEncodingException, InterruptedException {
         LoginSteps loginSteps = new LoginSteps();
-        loginSteps.fillLoginFormAndSubmit("Halija", "zfFr3h@jhj1.com");
+        loginSteps.fillLoginFormAndSubmit("Natalia", "zfFr3h@jhj1.com");
         String actualErrorText = LoadHelper.getTextByLocator(HomePage.errorLocator);
         Assertions.assertEquals(HomePage.expectedErrorText, actualErrorText);
     }
@@ -30,7 +30,7 @@ public class HomePageTests {
     @Test
     public void loginWithoutEmail() throws UnsupportedEncodingException, InterruptedException {
         LoginSteps loginSteps = new LoginSteps();
-        loginSteps.fillLoginFormAndSubmit("Halija", "");
+        loginSteps.fillLoginFormAndSubmit("Natalia", "");
         String actualErrorText = LoadHelper.getTextByLocator(HomePage.errorLocator);
         Assertions.assertEquals(HomePage.expectedErrorText, actualErrorText);
     }
