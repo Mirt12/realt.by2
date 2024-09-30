@@ -15,15 +15,17 @@ public class HomePageTests {
     @Test
     public void loginWithNonLoggedInUser() throws UnsupportedEncodingException, InterruptedException {
         LoginSteps loginSteps = new LoginSteps();
-        Util util = new Util();
         loginSteps.fillEmailAndSubmit(Util.generateEmail());
         String actualHeaderText = LoadHelper.getTextByLocator(HomePage.registrationByEmailHeaderLocator);
         Assertions.assertEquals(HomePage.expectedHeaderText, actualHeaderText);
+        String actualBtnText = LoadHelper.getTextByLocator(HomePage.submitRegistrationBtnLocator);
+        Assertions.assertEquals(HomePage.submitRegistrationBtnText, actualBtnText );
     }
 
     @Test
-    public void loginWithIncorrectLogin() throws UnsupportedEncodingException, InterruptedException {
+    public void newUserRegistration() throws UnsupportedEncodingException, InterruptedException {
         LoginSteps loginSteps = new LoginSteps();
+        Util util= new Util();
         loginSteps.fillLoginFormAndSubmit("GGGGGG", "Mirt@gmail.com");
         String actualErrorText = LoadHelper.getTextByLocator(HomePage.errorLocator);
         Assertions.assertEquals(HomePage.expectedErrorText, actualErrorText);

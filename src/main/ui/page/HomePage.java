@@ -17,11 +17,13 @@ public class HomePage {
     public static final String continueBtnLocator = "//button[@type='submit']";
     public static final String emailInputFielLocator = "//input[@id='email']";
     public static final String submitRegistrationBtnLocator = "//button[@type='submit']";
+    public static final String submitRegistrationBtnText = "Зарегистрироваться";
     public static final String agreeConditionsCheckBoxLocator = "//label[@for='gdprConfirmed']";
     public static final String expectedErrorText = "Введен неверный пароль";
     public static final String errorLocator = "//div[@class='text-danger-500 pt-1.5 text-subhead']";
     public static final String registrationByEmailHeaderLocator = "//h2/span[@class]";
     public static final String expectedHeaderText = "Регистрация по email";
+
 
 
 
