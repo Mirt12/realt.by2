@@ -23,6 +23,8 @@ public class HomePage {
     public static final String errorLocator = "//div[@class='text-danger-500 pt-1.5 text-subhead']";
     public static final String registrationByEmailHeaderLocator = "//h2/span[@class]";
     public static final String expectedHeaderText = "Регистрация по email";
+    public static final String thanksForRegistrationHeaderLocator = "//h2/span[@class]";
+    public static final String expectedRegistrationHeaderText = "Спасибо за регистрацию!";
 
 
 

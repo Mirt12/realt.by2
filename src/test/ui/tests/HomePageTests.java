@@ -25,10 +25,9 @@ public class HomePageTests {
     @Test
     public void newUserRegistration() throws UnsupportedEncodingException, InterruptedException {
         LoginSteps loginSteps = new LoginSteps();
-        Util util= new Util();
-        loginSteps.fillLoginFormAndSubmit("GGGGGG", "Mirt@gmail.com");
-        String actualErrorText = LoadHelper.getTextByLocator(HomePage.errorLocator);
-        Assertions.assertEquals(HomePage.expectedErrorText, actualErrorText);
+        loginSteps.fillLoginFormAndSubmit(Util.generateEmail(), Util.generatePassword());
+        String actualHeaderText = LoadHelper.getTextByLocator(HomePage.thanksForRegistrationHeaderLocator);
+        Assertions.assertEquals(HomePage.expectedRegistrationHeaderText, actualHeaderText);
     }
 
     @Test
