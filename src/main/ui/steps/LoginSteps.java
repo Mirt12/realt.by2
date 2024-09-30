@@ -18,17 +18,17 @@ public class LoginSteps {
         Wait<WebDriver> wait = LoadHelper.wait30seconds();
         page.getBaseURL()
                 .openLoginLink()
-                .fillInputFieldEmail(wait, email)
+                .fillEmailOnLoginForm(wait, email)
                 .clickContinueBtn();
     }
 
-    public void fillLoginFormAndSubmit(String email, String password) {
+    public void fillRegistrationFormAndSubmit(String email) {
         HomePage page = new HomePage();
         Wait<WebDriver> wait = LoadHelper.wait30seconds();
         page.getLoginUrl()
-                .fillInputFieldEmail(wait, email)
+                .fillEmailOnLoginForm(wait, email)
                 .clickContinueBtn()
-                .fillInputFieldPWD(wait, password)
+                .fillEmailInRegistrationForm(wait, email)
                 .selectAgreeConditionsCheckBox()
                 .submitRegistrationForm();
     }

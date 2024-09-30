@@ -19,24 +19,22 @@ public class HomePageTests {
         String actualHeaderText = LoadHelper.getTextByLocator(HomePage.registrationByEmailHeaderLocator);
         Assertions.assertEquals(HomePage.expectedHeaderText, actualHeaderText);
         String actualBtnText = LoadHelper.getTextByLocator(HomePage.submitRegistrationBtnLocator);
-        Assertions.assertEquals(HomePage.submitRegistrationBtnText, actualBtnText );
+        Assertions.assertEquals(HomePage.submitRegistrationBtnText, actualBtnText);
     }
 
     @Test
     public void newUserRegistration() throws UnsupportedEncodingException, InterruptedException {
         LoginSteps loginSteps = new LoginSteps();
-        loginSteps.fillLoginFormAndSubmit(Util.generateEmail(), Util.generatePassword());
+        loginSteps.fillRegistrationFormAndSubmit(Util.generateEmail());
         String actualHeaderText = LoadHelper.getTextByLocator(HomePage.thanksForRegistrationHeaderLocator);
         Assertions.assertEquals(HomePage.expectedRegistrationHeaderText, actualHeaderText);
     }
 
     @Test
-    public void loginWithoutEmail() throws UnsupportedEncodingException, InterruptedException {
+    public void incorrectEmailFormatInRegistration() throws UnsupportedEncodingException, InterruptedException {
         LoginSteps loginSteps = new LoginSteps();
-        loginSteps.fillLoginFormAndSubmit("Natalia", "");
-        String actualErrorText = LoadHelper.getTextByLocator(HomePage.errorLocator);
-        Assertions.assertEquals(HomePage.expectedErrorText, actualErrorText);
+        loginSteps.fillRegistrationFormAndSubmit("groenten");
+        String actualErrorText = LoadHelper.getTextByLocator(HomePage.incorrectEmailErrorLocator);
+        Assertions.assertEquals(HomePage.expectedErrorTextForIncorrectEmail, actualErrorText);
     }
-
-
 }
