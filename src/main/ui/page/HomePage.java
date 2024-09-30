@@ -18,8 +18,11 @@ public class HomePage {
     public static final String emailInputFielLocator = "//input[@id='email']";
     public static final String submitRegistrationBtnLocator = "//button[@type='submit']";
     public static final String agreeConditionsCheckBoxLocator = "//label[@for='gdprConfirmed']";
-    public static final String expectedErrorText = "Некорректный Email";
+    public static final String expectedErrorText = "Введен неверный пароль";
     public static final String errorLocator = "//div[@class='text-danger-500 pt-1.5 text-subhead']";
+    public static final String registrationByEmailHeaderLocator = "//h2/span[@class]";
+    public static final String expectedHeaderText = "Регистрация по email";
+
 
 
     public HomePage() {
@@ -42,13 +45,13 @@ public class HomePage {
         return this;
     }
 
-    public HomePage fillInputFieldLogin(Wait wait, String login) {
+    public HomePage fillInputFieldEmail(Wait wait, String email) {
         WebElement inputLogin = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
                 return driver.findElement(By.xpath(loginInputFieldLocator));
             }
         });
-        inputLogin.sendKeys(login);
+        inputLogin.sendKeys(email);
         return this;
     }
 
@@ -58,13 +61,13 @@ public class HomePage {
         return this;
     }
 
-    public HomePage fillInputFieldEmail(Wait wait, String email) {
-        WebElement inputEmail = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
+    public HomePage fillInputFieldPWD(Wait wait, String password) {
+        WebElement inputPWD = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
                 return driver.findElement(By.xpath(emailInputFielLocator));
             }
         });
-        inputEmail.sendKeys(email);
+        inputPWD.sendKeys(password);
         return this;
     }
 

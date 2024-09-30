@@ -8,4 +8,9 @@ public class Util {
         String email = faker.internet().emailAddress();
         return email;
     }
+    public static String generatePassword() {
+        Faker faker = new Faker();
+        String password = faker.internet().password();
+        return password;
+    }
 }

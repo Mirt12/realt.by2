@@ -13,20 +13,22 @@ public class LoginSteps {
         this.driver = DriverSingleton.getDriver();
     }
 
-    public void openLoginForm() {
+    public void fillEmailAndSubmit(String email) {
         HomePage page = new HomePage();
         Wait<WebDriver> wait = LoadHelper.wait30seconds();
         page.getBaseURL()
-                .openLoginLink();
+                .openLoginLink()
+                .fillInputFieldEmail(wait, email)
+                .clickContinueBtn();
     }
 
-    public void fillLoginFormAndSubmit(String login, String email) {
+    public void fillLoginFormAndSubmit(String email, String password) {
         HomePage page = new HomePage();
         Wait<WebDriver> wait = LoadHelper.wait30seconds();
         page.getLoginUrl()
-                .fillInputFieldLogin(wait, login)
-                .clickContinueBtn()
                 .fillInputFieldEmail(wait, email)
+                .clickContinueBtn()
+                .fillInputFieldPWD(wait, password)
                 .selectAgreeConditionsCheckBox()
                 .submitRegistrationForm();
     }
