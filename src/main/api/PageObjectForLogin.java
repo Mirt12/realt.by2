@@ -3,9 +3,9 @@ package main.api;
 import java.util.HashMap;
 
 public class PageObjectForLogin {
-    String endpoint = "https://realt.by/bff/graphql";
+    public String endpoint = "https://realt.by/bff/graphql";
 
-    public HashMap<String, String> getRequestheaders() {
+    public HashMap<String, String> getRequestHeaders() {
         HashMap<String, String> headers = new HashMap<>();
         headers.put("content-type", "application/json");
         return headers;
